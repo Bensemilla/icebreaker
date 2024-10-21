@@ -19,14 +19,23 @@ questions_length = len(questions_list)
 
 def random_question():
     question_num = random.randint(0, (questions_length - 1))
-    print(questions_list[question_num])
+    return(questions_list[question_num])
 
 
-# Create and define root GUI window
+# Create and define root GUI window, label and button
 
 root_window = Tk()
 root_window.title("Icebreaker questions")
 root_window.geometry('350x200')
+
+lbl = Label(root_window, text = "Get an icebreaker question by clicking the button!")
+lbl.grid()
+
+def clicked():
+    lbl.configure(text = random_question())
+
+btn = Button(root_window, text = "Click me!", fg = "green", command = clicked)
+btn.grid(column = 0, row = 4)
 
 root_window.mainloop()
 
